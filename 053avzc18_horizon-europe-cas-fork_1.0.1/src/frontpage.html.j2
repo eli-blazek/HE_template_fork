@@ -1,0 +1,27 @@
+<header>
+  <center>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/European_Commission_Document_SVG.svg/320px-European_Commission_Document_SVG.svg.png" height="78" width="160" class="eu-header" />
+  </center>
+  <h1>{{ ctx.questionnaire.name }}</h1>
+  <center>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/320px-Flag_of_Europe.svg.png" height="213" width="320" class="eu-flag" />
+  </center>
+  <h3>
+    Horizon Europe<br/>
+    Data Management Plan
+  </h3>
+
+  <div class="info">
+    <div class="version-info">
+      {% for version in dc.qtn.versions if version.uuid == dc.qtn.version %}
+        <div class="version">{{version.name}}</div>
+      {% endfor %}
+      <div class="date">{{ dc.doc.created_at|datetime_format("%d %B %Y") }}</div>
+    </div>
+
+    <p class="note">
+      Data Management Plan created in {{ globals.fullName }} &laquo;<a href="{{ globals.linkUrl }}" target="_blank">{{ globals.link }}</a>&raquo;<br/>
+      using {{ dc.pkg.name }} v{{ dc.pkg.version }} (<span class="package-id"><span class="organization-id">{{ dc.pkg.org_id }}</span>:<span class="km-id">{{ dc.pkg.km_id }}</span>:<span class="version">{{ dc.pkg.version }}</span></span>).
+    </p>
+  </div>
+</header>
